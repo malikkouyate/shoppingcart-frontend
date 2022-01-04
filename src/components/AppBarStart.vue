@@ -66,7 +66,7 @@
 
 <script>
 export default {
-  name: 'AppBar',
+  name: 'AppBarStart',
   data: () => ({
     drawer: null
 

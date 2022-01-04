@@ -1,62 +1,125 @@
 <template>
-  <section class="vh-100 bg-image" style="background-image: url('https://mdbcdn.b-cdn.net/img/Photos/new-templates/search-box/img4.webp');">
-    <div class="mask d-flex align-items-center h-100 gradient-custom-3">
-      <div class="container fluid">
-        <div class="row d-flex justify-content-center align-items-center h-100">
-          <div class="col-12 col-md-9 col-lg-7 col-xl-6">
-            <div class="card" style="border-radius: 15px;">
-              <div class="card-body p-5">
-                <h2 class="text-uppercase text-center mb-5">Create an account</h2>
+  <div class="pa-10">
+    <v-form
+        ref="form"
+        v-model="valid"
+        lazy-validation
+    >
+      <app-bar-start/>
+      <v-text-field
+          v-model="firstname"
+          :counter="15"
+          :rules="firstnameRules"
+          label="First Name"
+          required
+      ></v-text-field>
 
-                <form>
+      <v-text-field
+          v-model="lastname"
+          :counter="15"
+          :rules="lastnameRules"
+          label="Last Name"
+          required
+      ></v-text-field>
 
-                  <div class="form-outline mb-4">
-                    <input type="text" id="form3Example1cg" class="form-control form-control-lg" />
-                    <label class="form-label" for="form3Example1cg">Your Name</label>
-                  </div>
+      <v-text-field
+          v-model="email"
+          :rules="emailRules"
+          label="E-mail"
+          required
+      ></v-text-field>
 
-                  <div class="form-outline mb-4">
-                    <input type="email" id="form3Example3cg" class="form-control form-control-lg" />
-                    <label class="form-label" for="form3Example3cg">Your Email</label>
-                  </div>
+      <v-text-field
+          v-model="password"
+          :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
+          :rules="[rules.required, rules.min]"
+          :type="show1 ? 'text' : 'password'"
+          name="input-10-1"
+          label="Password"
+          hint="At least 8 characters"
+          counter
+          @click:append="show1 = !show1"
+      ></v-text-field>
 
-                  <div class="form-outline mb-4">
-                    <input type="password" id="form3Example4cg" class="form-control form-control-lg" />
-                    <label class="form-label" for="form3Example4cg">Password</label>
-                  </div>
 
-                  <div class="form-outline mb-4">
-                    <input type="password" id="form3Example4cdg" class="form-control form-control-lg" />
-                    <label class="form-label" for="form3Example4cdg">Repeat your password</label>
-                  </div>
+      <v-checkbox
+          v-model="checkbox"
+          :rules="[v => !!v || 'You must agree to continue!']"
+          label="Do you agree?"
+          required
+      ></v-checkbox>
 
-                  <div class="form-check d-flex justify-content-center mb-5">
-                    <input
-                        class="form-check-input me-2"
-                        type="checkbox"
-                        value=""
-                        id="form2Example3cg"
-                    />
-                    <label class="form-check-label">
-                      I agree all statements in <a href="/termsofservice" class="text-body"><u>Terms of service</u></a>
-                    </label>
-                  </div>
+      <v-btn
+          :disabled="!valid"
+          color="success"
+          class="mr-4"
+          @click="validate"
 
-                  <div class="d-flex justify-content-center">
-                    <button type="button" class="btn btn-success btn-block btn-lg gradient-custom-4 text-body"><a href="/home">Register</a></button>
-                  </div>
+      >
+        Register
+      </v-btn>
 
-                  <p class="text-center text-muted mt-5 mb-0">Have already an account? <a href="#!" class="fw-bold text-body"><u>Login here</u></a></p>
+      <v-btn
+          color="error"
+          class="mr-4"
+          @click="reset"
+      >
+        Reset Form
+      </v-btn>
 
-                </form>
+      <v-btn
+          color="warning"
+          @click="resetValidation"
+      >
+        Reset Validation
+      </v-btn>
+    </v-form>
+  </div>
 
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
 </template>
-<style src="./registrationstyle.css"></style>
 
+<script>
+export default {
+  data: () => ({
+    valid: true,
+    firstname: '',
+    firstnameRules: [
+      v => !!v || 'Name is required',
+      v => (v && v.length <= 15) || 'Name must be less than 10 characters',
+    ],
+    lastname: '',
+    lastnameRules: [
+      v => !!v || 'Name is required',
+      v => (v && v.length <= 15) || 'Name must be less than 10 characters',
+    ],
+    email: '',
+    emailRules: [
+      v => !!v || 'E-mail is required',
+      v => /.+@.+\..+/.test(v) || 'E-mail must be valid',
+    ],
+    show1: false,
+    rules: {
+      required: value => !!value || 'Required.',
+      min: v => v.length >= 8 || 'Min 8 characters',
+    },
+
+    checkbox: false,
+  }),
+
+  methods: {
+    validate () {
+      this.$refs.form.validate()
+    },
+    reset () {
+      this.$refs.form.reset()
+    },
+    resetValidation () {
+      this.$refs.form.resetValidation()
+    },
+  },
+  components:{
+    'app-bar-start': require('@/components/AppBarStart.vue').default
+
+  }
+}
+</script>
