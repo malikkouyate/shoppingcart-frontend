@@ -4,8 +4,8 @@
     <app-bar-list/>
 
     <div class="pa-6">
-      <input  class="pa-3" v-model="title" placeholder="Title"  >
-      <input  class="pa-3" v-model="link" placeholder="Link" @keyup.enter="addItem" >
+      <input  class="pa-3" v-model="titleField" placeholder="Title"  >
+      <input  class="pa-3" v-model="linkField" placeholder="Link" @keyup.enter="addItem" >
       <v-btn class="pa-6" @click="addItem" elevation="3">Add</v-btn>
 
     </div>
@@ -59,8 +59,8 @@ export default {
   data(){
     return{
       items:[],
-      title:'',
-      link:''
+      titleField:'',
+      linkField:''
     }
   },
   methods:{
@@ -74,8 +74,8 @@ export default {
       myHeaders.append("Content-Type", "application/json");
 
       const raw = JSON.stringify({
-        title: this.title,
-        link: this.link
+        title: this.titleField,
+        link: this.linkField
       });
 
       const requestOptions = {
@@ -85,12 +85,18 @@ export default {
         redirect: 'follow'
       };
 
-      fetch("http://localhost:8080/api/v1/registration/list", requestOptions)
-          .then(response => response.text())
+      fetch(endpoint, requestOptions)
+          .then(response => response.json())
           .then(result => console.log(result))
           .catch(error => console.log('error', error));
+
+      this.titleField = ''
+      this.linkField = ''
     }
+
+
   },
+
   components:{
     'task-menu': require('@/components/TaskMenu.vue').default,
     'app-bar-list': require('@/components/AppBarList.vue').default
