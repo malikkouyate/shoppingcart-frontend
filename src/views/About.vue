@@ -1,14 +1,10 @@
 <template>
   <div class="about container--fluid" >
 
-    <div class="pa-3">
+    <div class="pa-6">
       <input  class="pa-3" v-model="titleField" placeholder="Title"  >
       <input  class="pa-3" v-model="linkField" placeholder="Link" @keyup.enter="addItem" >
-
-      <v-icon @click:append="addItem" class="pa-3">
-        mdi-plus-circle
-      </v-icon>
-
+      <v-btn class="pa-6" @click="addItem" elevation="3">Add</v-btn>
 
     </div>
 
@@ -43,11 +39,7 @@
         </v-list-item-content>
 
         <v-list-item-action>
-          <v-btn
-              @click.stop="deleteItem(item.id)"
-              icon>
-            <v-icon color="dark lighten-1">mdi-delete</v-icon>
-          </v-btn>
+          <task-menu/>
         </v-list-item-action>
       </v-list-item>
 
@@ -86,6 +78,9 @@ export default {
       this.titleField = ''
       this.linkField = ''
     }
+  },
+  components:{
+    'task-menu': require('@/components/TaskMenu.vue').default
   }
 }
 </script>
