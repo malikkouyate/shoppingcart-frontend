@@ -68,7 +68,7 @@ export default {
       this.items = this.items.filter(item => item.id !== id)
     },
     addItem(){
-      const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + '/api/v1/registration/list'
+      const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + 'api/v1/registration/list'
 
       const myHeaders = new Headers();
       myHeaders.append("Content-Type", "application/json");
