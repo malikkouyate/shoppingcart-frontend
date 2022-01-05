@@ -55,6 +55,7 @@
           color="success"
           class="mr-4"
           @click="validate;addUser();"
+          to="/emailvalidationpage"
       >
         Register
       </v-btn>
@@ -70,7 +71,6 @@
       <v-btn
           color="warning"
           @click="resetValidation;"
-          to="/EmailValidationPage"
       >
         Reset Validation
       </v-btn>
@@ -111,7 +111,6 @@ export default {
   methods: {
     validate () {
       this.$refs.form.validate()
-
     },
     reset () {
       this.$refs.form.reset()

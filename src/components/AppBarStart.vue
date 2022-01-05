@@ -19,7 +19,7 @@
             <v-list-item-title>Home</v-list-item-title>
           </v-list-item>
 
-          <v-list-item>
+          <v-list-item to="/login">
             <v-list-item-title>Login</v-list-item-title>
           </v-list-item>
 
@@ -27,9 +27,7 @@
             <v-list-item-title>Registration</v-list-item-title>
           </v-list-item>
 
-          <v-list-item to="/about">
-            <v-list-item-title>About</v-list-item-title>
-          </v-list-item>
+
         </v-list-item-group>
       </v-list>
     </v-navigation-drawer>
