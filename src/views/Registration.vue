@@ -55,7 +55,7 @@
           color="success"
           class="mr-4"
           @click="validate;addUser();"
-          to="/emailvalidationpage"
+
       >
         Register
       </v-btn>
@@ -121,7 +121,7 @@ export default {
       this.$refs.form.resetValidation()
     },
     addUser(){
-      const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + '/api/v1/registration'
+      const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + 'api/v1/registration'
 
 
       const myHeaders = new Headers();
@@ -146,10 +146,10 @@ export default {
           .then(result => console.log(result))
           .catch(error => console.log('error', error));
 
-      // this.firstname = ''
-      // this.lastname = ''
-      // this.email = ''
-      // this.password = ''
+      this.firstname = ''
+      this.lastname = ''
+      this.email = ''
+      this.password = ''
 
 
     }

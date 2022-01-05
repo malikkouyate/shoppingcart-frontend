@@ -18,6 +18,7 @@
         class="pa-3"
         subheader
         two-line
+        v-if="items.length"
     >
 
       <v-list-item
@@ -76,7 +77,21 @@
 
 
 
+
+
     </v-list>
+    <div
+    v-else
+    class="no-items"
+    >
+
+      <v-icon size="150px" class="no-items-icon">
+        mdi-cart-remove
+      </v-icon>
+
+      <div class="text-h4" style="color: #a22626">Driplist empty</div>
+
+    </div>
   </div>
 </template>
 
@@ -173,3 +188,18 @@ export default {
 
 }
 </script>
+<style lang="sass">
+
+.no-items
+  position: absolute
+  left: 50%
+  top: 50%
+  transform: translate(-50%, -50%)
+
+.no-items-icon
+  position: absolute
+  left: 50%
+  transform: translate(-50%, 0%)
+
+
+</style>
