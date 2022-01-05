@@ -4,6 +4,7 @@
     <app-bar-list/>
 
 
+
     <div class="pa-6">
       <input  class="pa-3" v-model="titleField" placeholder="Title"  >
       <input  class="pa-3" v-model="linkField" placeholder="Link" @keyup.enter="addItem" >
@@ -182,8 +183,7 @@ export default {
   },
 
   components:{
-    'app-bar-list': require('@/components/AppBarList.vue').default,
-
+    'app-bar-list': require('@/components/AppBarList.vue').default
   }
 
 }
