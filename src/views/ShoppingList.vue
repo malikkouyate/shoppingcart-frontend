@@ -63,7 +63,7 @@
 
                 <v-list-item-action>
                   <v-btn
-                      @click.stop="deleteItem(item.title)"
+                      @click.stop="deleteItem(item.link)"
                       icon>
                     <v-icon>mdi-delete</v-icon>
                   </v-btn>
@@ -103,8 +103,8 @@ export default {
     }
   },
   methods:{
-    deleteItem(title){
-      const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + 'api/v1/registration/list/{listItemId}'
+    deleteItem(link){
+      const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + 'api/v1/registration/list/' + link
 
 
       const requestOptions = {
@@ -113,11 +113,11 @@ export default {
       };
 
       fetch(endpoint, requestOptions)
-          .then(response => response.text())
+          .then(response => response.json())
           .then(result => console.log(result))
           .catch(error => console.log('error', error));
 
-      this.items = this.items.filter(item => item.title !== title)
+      this.items = this.items.filter(item => item.link !== link)
     },
     addItem(){
       const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + 'api/v1/registration/list'

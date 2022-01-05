@@ -55,7 +55,6 @@
           color="success"
           class="mr-4"
           @click="validate;addUser();"
-
       >
         Register
       </v-btn>
@@ -71,6 +70,7 @@
       <v-btn
           color="warning"
           @click="resetValidation;"
+          to="/EmailValidationPage"
       >
         Reset Validation
       </v-btn>
@@ -145,10 +145,11 @@ export default {
           .then(result => console.log(result))
           .catch(error => console.log('error', error));
 
-      this.firstname = ''
-      this.lastname = ''
-      this.email = ''
-      this.password = ''
+      // this.firstname = ''
+      // this.lastname = ''
+      // this.email = ''
+      // this.password = ''
+
 
     }
   },
