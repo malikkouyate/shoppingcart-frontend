@@ -4,6 +4,7 @@
     <app-bar-list/>
 
 
+
     <div class="pa-6">
       <input  class="pa-3" v-model="titleField" placeholder="Title"  >
       <input  class="pa-3" v-model="linkField" placeholder="Link" @keyup.enter="addItem" >
@@ -110,7 +111,7 @@ export default {
   },
   methods:{
     deleteItem(link){
-      const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + 'api/v1/registration/list/' + link
+      const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + '/api/v1/registration/list/' + link
 
 
       const requestOptions = {
@@ -126,7 +127,7 @@ export default {
       this.items = this.items.filter(item => item.link !== link)
     },
     addItem(){
-      const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + 'api/v1/registration/list'
+      const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + '/api/v1/registration/list'
 
       const myHeaders = new Headers();
       myHeaders.append("Content-Type", "application/json");
@@ -168,7 +169,7 @@ export default {
 
   },
   mounted() {
-    const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + 'api/v1/registration/list'
+    const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + '/api/v1/registration/list'
 
     const requestOptions = {
       method: 'GET',
@@ -182,8 +183,7 @@ export default {
   },
 
   components:{
-    'app-bar-list': require('@/components/AppBarList.vue').default,
-
+    'app-bar-list': require('@/components/AppBarList.vue').default
   }
 
 }
