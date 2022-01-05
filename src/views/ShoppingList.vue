@@ -111,7 +111,7 @@ export default {
   },
   methods:{
     deleteItem(link){
-      const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + '/api/v1/registration/list/' + link
+      const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + 'api/v1/registration/list/' + link
 
 
       const requestOptions = {
@@ -127,7 +127,7 @@ export default {
       this.items = this.items.filter(item => item.link !== link)
     },
     addItem(){
-      const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + '/api/v1/registration/list'
+      const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + 'api/v1/registration/list'
 
       const myHeaders = new Headers();
       myHeaders.append("Content-Type", "application/json");
@@ -169,7 +169,7 @@ export default {
 
   },
   mounted() {
-    const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + '/api/v1/registration/list'
+    const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + 'api/v1/registration/list'
 
     const requestOptions = {
       method: 'GET',
