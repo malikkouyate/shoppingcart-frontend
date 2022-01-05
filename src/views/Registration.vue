@@ -120,7 +120,7 @@ export default {
       this.$refs.form.resetValidation()
     },
     addUser(){
-      const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + 'api/v1/registration'
+      const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + '/api/v1/registration'
 
 
       const myHeaders = new Headers();
