@@ -43,39 +43,30 @@
           </v-list-item-subtitle>
         </v-list-item-content>
 
-        <v-list-item-action>
-          <v-menu
-              bottom
-              left
-          >
-            <template v-slot:activator="{ on, attrs }">
-              <v-btn
-                  icon
-                  v-bind="attrs"
-                  v-on="on"
-              >
-                <v-icon>mdi-dots-vertical</v-icon>
-              </v-btn>
-            </template>
-
-            <v-list>
-              <v-list-item>
-
-                <v-list-item-action>
+       <v-list-item-action>
                   <v-btn
-                      @click.stop="deleteItem(item.link)"
+                      @click.stop="deleteItem(item.link); snackbar = true"
                       icon>
                     <v-icon>mdi-delete</v-icon>
                   </v-btn>
-                </v-list-item-action>
+         <v-snackbar
+             v-model="snackbar"
+             :timeout="timeout"
+         >
+           {{ text }}
 
+           <template v-slot:action="{ attrs }">
+             <v-btn
+                 color="pink"
+                 text
+                 v-bind="attrs"
+                 @click="snackbar = false"
+             >
+               Close
+             </v-btn>
+           </template>
+         </v-snackbar>
 
-
-
-
-              </v-list-item>
-            </v-list>
-          </v-menu>
         </v-list-item-action>
       </v-list-item>
 
@@ -95,7 +86,10 @@ export default {
     return{
       items:[],
       titleField:'',
-      linkField:''
+      linkField:'',
+      snackbar: false,
+      text: `Task deleted!`,
+      timeout: 1200
     }
   },
   methods:{
