@@ -68,7 +68,7 @@ export default {
       this.items = this.items.filter(item => item.id !== id)
     },
     addItem(){
-      const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + '/api/v1/registration/list'
+      const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + 'api/v1/registration/list'
 
       const myHeaders = new Headers();
       myHeaders.append("Content-Type", "application/json");
@@ -90,11 +90,33 @@ export default {
           .then(result => console.log(result))
           .catch(error => console.log('error', error));
 
+      const newItem={
+        title: this.titleField,
+        link: this.linkField
+      }
+      this.items.push(newItem)
+
+
+
       this.titleField = ''
       this.linkField = ''
-    }
+    },
 
 
+
+  },
+  mounted() {
+    const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + 'api/v1/registration/list'
+
+    const requestOptions = {
+      method: 'GET',
+      redirect: 'follow'
+    };
+
+    fetch(endpoint, requestOptions)
+        .then(response => response.json())
+        .then(result => result.forEach(item => {this.items.push(item)}))
+        .catch(error => console.log('error', error))
   },
 
   components:{
