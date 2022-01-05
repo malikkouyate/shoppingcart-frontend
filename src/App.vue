@@ -13,7 +13,6 @@
 export default {
 
   components:{
-    'app-bars': require('@/components/AppBarStart.vue').default
   }
 }
 

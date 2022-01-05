@@ -3,10 +3,13 @@
 
     <app-bar-list/>
 
+
     <div class="pa-6">
       <input  class="pa-3" v-model="titleField" placeholder="Title"  >
       <input  class="pa-3" v-model="linkField" placeholder="Link" @keyup.enter="addItem" >
+
       <v-btn class="pa-6" @click="addItem" elevation="3">Add</v-btn>
+
 
     </div>
 
@@ -41,11 +44,47 @@
         </v-list-item-content>
 
         <v-list-item-action>
-          <task-menu/>
+          <v-menu
+              bottom
+              left
+          >
+            <template v-slot:activator="{ on, attrs }">
+              <v-btn
+                  icon
+                  v-bind="attrs"
+                  v-on="on"
+              >
+                <v-icon>mdi-dots-vertical</v-icon>
+              </v-btn>
+            </template>
+
+            <v-list>
+              <v-list-item>
+
+                <v-list-item-action>
+                  <v-btn
+                      @click.stop="deleteItem(item.title)"
+                      icon>
+                    <v-icon>mdi-delete</v-icon>
+                  </v-btn>
+                </v-list-item-action>
+
+                <v-list-item-action>
+                  <v-btn icon>
+                    <v-icon>mdi-pencil</v-icon>
+                  </v-btn>
+                </v-list-item-action>
+
+
+
+              </v-list-item>
+            </v-list>
+          </v-menu>
         </v-list-item-action>
       </v-list-item>
 
       <v-divider inset></v-divider>
+
 
 
 
@@ -64,8 +103,21 @@ export default {
     }
   },
   methods:{
-    deleteItem(id){
-      this.items = this.items.filter(item => item.id !== id)
+    deleteItem(title){
+      const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + 'api/v1/registration/list/{listItemId}'
+
+
+      const requestOptions = {
+        method: 'DELETE',
+        redirect: 'follow'
+      };
+
+      fetch(endpoint, requestOptions)
+          .then(response => response.text())
+          .then(result => console.log(result))
+          .catch(error => console.log('error', error));
+
+      this.items = this.items.filter(item => item.title !== title)
     },
     addItem(){
       const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + 'api/v1/registration/list'
@@ -94,13 +146,17 @@ export default {
         title: this.titleField,
         link: this.linkField
       }
-      this.items.push(newItem)
+
+      if(this.titleField.length > 0 && this.linkField.length > 0){
+        this.items.push(newItem)
+        this.titleField = ''
+        this.linkField = ''
+      }
 
 
-
-      this.titleField = ''
-      this.linkField = ''
     },
+
+
 
 
 
@@ -120,8 +176,8 @@ export default {
   },
 
   components:{
-    'task-menu': require('@/components/TaskMenu.vue').default,
-    'app-bar-list': require('@/components/AppBarList.vue').default
+    'app-bar-list': require('@/components/AppBarList.vue').default,
+
   }
 
 }
