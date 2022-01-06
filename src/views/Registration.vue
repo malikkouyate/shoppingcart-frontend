@@ -143,6 +143,9 @@ export default {
 
       fetch(endpoint, requestOptions)
           .then(response => response.json())
+          .then((response) => {if (response.status === 500){
+            this.$router.push('/emailtaken');
+          }})
           .then(result => console.log(result))
           .catch(error => console.log('error', error));
 

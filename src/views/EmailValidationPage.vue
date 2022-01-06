@@ -3,16 +3,17 @@
 <div>
 
   <div
-  class="email-text">
+  id="email-text">
 
     <v-icon
+        class="email-validation-icon"
         size="100px">
-
       mdi-lock-clock
 
     </v-icon>
 
-    Click the link in the E-Mail within the next 10 minutes to activate your account
+
+    <h4 style="text-align: center">Click the link in the E-Mail within the next 10 minutes to activate your account</h4>
 
   </div>
 
@@ -34,7 +35,7 @@ export default {
 
 <style lang="sass">
 
-.email-text
+#email-text
   position: absolute
   left: 50%
   top: 50%
@@ -47,6 +48,11 @@ export default {
   top: 75%
   transform: translate(-50%,-70%)
   opacity: 0.5
+
+.email-validation-icon
+  position: absolute
+  left: 50%
+  transform: translate(-50%, 0%)
 
 </style>
 <!--asdasdas-->
