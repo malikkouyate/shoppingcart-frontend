@@ -1,6 +1,6 @@
-import ShoppingList from "@/views/ShoppingList";
-import AppBarList from "@/components/AppBarList";
 import {mount} from "@vue/test-utils";
+import ShoppingList from "@/views/ShoppingList.vue";
+import AppBarList from "@/components/AppBarList.vue";
 
 
 describe('Testing ShoppingList.vue', ()=>{
