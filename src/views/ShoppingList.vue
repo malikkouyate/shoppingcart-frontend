@@ -6,7 +6,7 @@
 
 
     <div class="pa-6">
-      <input  class="pa-3" v-model="titleField" placeholder="Title"  >
+      <input  class="pa-3" v-model="titleField" placeholder="Title" @keyup.enter="addItem" >
       <input  class="pa-3" v-model="linkField" placeholder="Link" @keyup.enter="addItem" >
 
       <v-btn class="pa-6" @click="addItem" elevation="3">Add</v-btn>
@@ -36,10 +36,10 @@
         </v-list-item-avatar>
 
         <v-list-item-content>
-          <v-list-item-title v-text="item.title"></v-list-item-title>
+          <v-list-item-title v-text="item.title" class="item-title"></v-list-item-title>
 
           <v-list-item-subtitle>
-            <a :href="item.link">
+            <a :href="item.link" class="item-title">
               {{item.link}}
             </a>
           </v-list-item-subtitle>
@@ -47,7 +47,7 @@
 
        <v-list-item-action>
                   <v-btn
-                      @click.stop="deleteItem(item.link); snackbar = true"
+                      @click.stop="deleteItem(item.title); snackbar = true"
                       icon>
                     <v-icon>mdi-delete</v-icon>
                   </v-btn>
@@ -111,8 +111,8 @@ export default {
     }
   },
   methods:{
-    deleteItem(link){
-      const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + 'api/v1/registration/list/' + link
+    deleteItem(title){
+      const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + 'api/v1/registration/list/' + title
 
 
       const requestOptions = {
@@ -125,7 +125,7 @@ export default {
           .then(result => console.log(result))
           .catch(error => console.log('error', error));
 
-      this.items = this.items.filter(item => item.link !== link)
+      this.items = this.items.filter(item => item.title !== title)
     },
     addItem(){
       const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + 'api/v1/registration/list'

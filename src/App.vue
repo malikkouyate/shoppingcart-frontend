@@ -15,7 +15,7 @@
 export default {
 
   components:{
-    'footer-s': require('@/components/Footer.vue').default,
+    'footer-s': require('@/components/Footer.vue').default
   }
 }
 
