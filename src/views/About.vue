@@ -32,7 +32,7 @@ export default {
       items: [
         {
           src: 'https://cdn.vuetifyjs.com/images/carousel/squirrel.jpg',
-          texts: "Unser Eichhörnchen > Eure Eichhörnchen"
+          texts: "Wir herzen alle Eichhörnchen!!!"
         },
         {
           src: 'https://cdn.vuetifyjs.com/images/carousel/sky.jpg',
