@@ -36,10 +36,10 @@
         </v-list-item-avatar>
 
         <v-list-item-content>
-          <v-list-item-title v-text="item.title" class="item-title"></v-list-item-title>
+          <v-list-item-title v-text="item.title"></v-list-item-title>
 
           <v-list-item-subtitle>
-            <a :href="item.link" class="item-title">
+            <a :href="item.link">
               {{item.link}}
             </a>
           </v-list-item-subtitle>
