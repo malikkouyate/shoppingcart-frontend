@@ -97,6 +97,7 @@
 </template>
 
 <script>
+
 export default {
   name: 'ShoppingList',
   data(){
@@ -183,6 +184,7 @@ export default {
   },
 
   components:{
+
     'app-bar-list': require('@/components/AppBarList.vue').default
   }
 

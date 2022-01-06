@@ -54,7 +54,7 @@
           :disabled="!valid"
           color="success"
           class="mr-4"
-          @click="validate;addUser();"
+          @click="validate;addUser();goToHome()"
 
       >
         Register
@@ -152,6 +152,9 @@ export default {
       this.password = ''
 
 
+    },
+    goToHome(){
+      this.$router.push('/emailvalidationpage');
     }
   },
   components:{
