@@ -12,7 +12,7 @@ describe('Testing ShoppingList.vue', ()=>{
         expect(appBarList.exists()).toBeTruthy()
     })
 
-    it('should render a person card for each person', () => {
+    it('should render a item card for each item', () => {
 
         const wrapper = mount(ShoppingList, {
             propsData: {
@@ -31,7 +31,7 @@ describe('Testing ShoppingList.vue', ()=>{
         expect(shoppingList.length).toBe(1)
     })
 
-    it('should render first name and last name', () => {
+    it('should render title', () => {
 
 
 
@@ -46,13 +46,11 @@ describe('Testing ShoppingList.vue', ()=>{
         })
 
         // then
-        const itemTitle = wrapper.findComponent('v-list-item-title')
+        const itemTitle = wrapper.find('v-list-item-title')
         expect(itemTitle.text()).toBe('Shopping-List')
     })
 
 
-
-
-
+    //4. Test nicht gemacht, da bei Daniels Beispiel Bootstrap benutzt wurde und wir vuetifiy nutzen und deshalb leider keine Lösungsmöglichkeit finden konnten
 
 })
