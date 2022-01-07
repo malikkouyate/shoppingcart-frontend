@@ -5,14 +5,11 @@
   <h1 style="font-size: 500%; text-align: center">Welcome to our DripList</h1>
   <h4 style="font-size: 150%; opacity: 0.6; text-align: center">Built to keep track of your desires</h4>
 
-  <div style="padding: 100px">
-    <img class="img-home-3" src="../assets/mb1.jpeg" >
-    <img class="img-home-2" src="../assets/mb2.jpeg">
-    <img class="img-home" src="../assets/mb5.jpeg">
-  </div>
+  <v-icon size="200px">
+    mdi-emoticon-cool
+  </v-icon>
 
 </div>
-
 </template>
 
 <script>
