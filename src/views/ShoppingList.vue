@@ -92,25 +92,6 @@
 
       <div class="text-h4" style="color: #a22626">Driplist empty</div>
 
-      <v-snackbar
-          v-model="snackbar"
-          :timeout="timeout"
-      >
-        {{ text }}
-        <!--           huefhuhu-->
-
-        <template v-slot:action="{ attrs }">
-          <v-btn
-              color="pink"
-              text
-              v-bind="attrs"
-              @click="snackbar = false"
-          >
-            Close
-          </v-btn>
-        </template>
-      </v-snackbar>
-
     </div>
   </div>
 </template>
