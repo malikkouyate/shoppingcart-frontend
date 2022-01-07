@@ -54,7 +54,7 @@
           :disabled="!valid"
           color="success"
           class="mr-4"
-          @click="validate;addUser();goToHome()"
+          @click="validate;addUser();"
 
       >
         Register
@@ -145,7 +145,11 @@ export default {
           .then(response => response.json())
           .then((response) => {if (response.status === 500){
             this.$router.push('/emailtaken');
-          }})
+          }
+          else {
+            this.$router.push('/emailvalidationpage');
+          }
+          })
           .then(result => console.log(result))
           .catch(error => console.log('error', error));
 
@@ -155,10 +159,8 @@ export default {
       this.password = ''
 
 
-    },
-    goToHome(){
-      this.$router.push('/emailvalidationpage');
     }
+
   },
   components:{
     'app-bar-start': require('@/components/AppBarStart.vue').default
