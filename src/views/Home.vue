@@ -52,7 +52,7 @@
   position: absolute
   left: 50%
   top: 75%
-  transform: translate(-50%,-70%)
+  transform: translate(-50%,-25%)
 
 </style>
 
