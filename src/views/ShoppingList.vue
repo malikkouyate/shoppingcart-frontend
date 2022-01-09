@@ -7,8 +7,8 @@
     <div>
       <div class="pa-6 inputs">
 
-        <input  class="pa-3 input-child-l" style="border-style: solid; border-width: 1px; border-radius: 25px" v-model="titleField" placeholder="Title" @keyup.enter="addItem" >
-        <input  class="pa-3 input-child-r" style="border-style: solid; border-width: 1px; border-radius: 25px" v-model="linkField" placeholder="Link" @keyup.enter="addItem" >
+        <input  class="pa-3 input-child-l input-border" v-model="titleField" placeholder="Title" @keyup.enter="addItem" >
+        <input  class="pa-3 input-child-r input-border" v-model="linkField" placeholder="Link" @keyup.enter="addItem" >
         <v-btn class="plus-icon" @click="addItem" icon>
           <v-icon>
             mdi-plus-circle
@@ -232,6 +232,11 @@ export default {
  left: 72%
  top: 30%
  transform: translate(10%, 20%)
+
+.input-border
+  border-radius: 25px
+  border-width: 1px
+  border-style: solid
 
 
 
