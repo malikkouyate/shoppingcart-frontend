@@ -4,12 +4,17 @@
     <app-bar-list/>
 
 
+    <div>
+      <div class="pa-6 inputs">
 
-    <div class="pa-6">
-      <input  class="pa-3" v-model="titleField" placeholder="Title" @keyup.enter="addItem" >
-      <input  class="pa-3" v-model="linkField" placeholder="Link" @keyup.enter="addItem" >
-
-      <v-btn class="pa-6" @click="addItem" elevation="3">Add</v-btn>
+        <input  class="pa-3 input-child-l" style="border-style: solid; border-width: 1px; border-radius: 25px" v-model="titleField" placeholder="Title" @keyup.enter="addItem" >
+        <input  class="pa-3 input-child-r" style="border-style: solid; border-width: 1px; border-radius: 25px" v-model="linkField" placeholder="Link" @keyup.enter="addItem" >
+        <v-btn class="plus-icon" @click="addItem" icon>
+          <v-icon>
+            mdi-plus-circle
+          </v-icon>
+        </v-btn>
+      </div>
 
 
     </div>
@@ -202,6 +207,35 @@ export default {
   position: absolute
   left: 50%
   transform: translate(-50%, 0%)
+
+.inputs
+  margin: 0 auto
+
+
+.input-child-l
+  position: absolute
+  margin: 0 auto
+  width: 20%
+  left: 42%
+  transform: translate(-65%, 0)
+
+
+
+.input-child-r
+  position: absolute
+  margin: 0 auto
+  width: 20%
+  right: 42%
+  transform: translate(65%, 0)
+
+.plus-icon
+ left: 72%
+ top: 30%
+ transform: translate(10%, 20%)
+
+
+
+
 
 
 </style>

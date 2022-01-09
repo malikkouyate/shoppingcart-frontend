@@ -68,12 +68,7 @@
         Reset Form
       </v-btn>
 
-      <v-btn
-          color="warning"
-          @click="resetValidation;"
-      >
-        Reset Validation
-      </v-btn>
+
 
 
     </v-form>
@@ -116,9 +111,6 @@ export default {
     },
     reset () {
       this.$refs.form.reset()
-    },
-    resetValidation () {
-      this.$refs.form.resetValidation()
     },
     addUser(){
       const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + '/api/v1/registration'
